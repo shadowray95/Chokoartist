@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "768512454538",
+    "firebase_url": "https://chokoartist-v1.firebaseio.com",
+    "project_id": "chokoartist-v1",
+    "storage_bucket": "chokoartist-v1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768512454538:android:83b05a869b87122b1d2273",
+        "android_client_info": {
+          "package_name": "com.shadowraylabs.chokoartist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768512454538-8mfacl9bapgkhu09iq3qli0g1iujniip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Yhbnsr41_RmGDLavrX_5aJPy5YFjjHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768512454538-8mfacl9bapgkhu09iq3qli0g1iujniip.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
