@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activities.ui.contactUs.contactUsFragment"
+    android:background="@drawable/background4">
+
+    <Button
+        android:id="@+id/contact_us_call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:text="C a l l  U s"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textSize="17sp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="@android:color/white"
+        >
+    </Button>
+
+    <Button
+        android:id="@+id/contact_us_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:layout_below="@id/contact_us_call"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="M a i l  U s"
+        android:textColor="@android:color/white"
+        android:padding="10dp"
+        android:textSize="17sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+    </Button>
+
+</RelativeLayout>

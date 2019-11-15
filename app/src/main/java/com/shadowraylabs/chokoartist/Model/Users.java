@@ -1,9 +1,13 @@
 package com.shadowraylabs.chokoartist.Model;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
     private String name;
     private String phoneNo;
     private String password;
+    private Integer noOfReferrals;
+    private Integer storeCredits;
 
     public String getName() {
         return name;
@@ -27,5 +31,21 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getNoOfReferrals() {
+        return noOfReferrals;
+    }
+
+    public void setNoOfReferrals(Integer noOfReferrals) {
+        this.noOfReferrals = noOfReferrals;
+    }
+
+    public Integer getStoreCredits() {
+        return storeCredits;
+    }
+
+    public void setStoreCredits(Integer storeCredits) {
+        this.storeCredits = storeCredits;
     }
 }

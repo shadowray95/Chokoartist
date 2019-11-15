@@ -1,4 +1,4 @@
-package com.shadowraylabs.chokoartist;
+package com.shadowraylabs.chokoartist.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.shadowraylabs.chokoartist.Model.Users;
+import com.shadowraylabs.chokoartist.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -65,8 +66,10 @@ public class LoginActivity extends AppCompatActivity {
                 if(dataSnapshot.child("Users").child(phoneNo).exists()){
                     Users user = dataSnapshot.child("Users").child(phoneNo).getValue(Users.class);
                     if(user.getPassword().equals(password)){
-                        Toast.makeText(LoginActivity.this, "Welcome "+user.getName(), Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
+                        Intent intent = new Intent(LoginActivity.this, AdminMainActivity.class);
+                        intent.putExtra("userObj", user);
+                        startActivity(intent);
                     }
                     else{
                         Toast.makeText(LoginActivity.this, "Invalid Password. Please Try Again", Toast.LENGTH_LONG).show();
