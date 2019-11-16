@@ -105,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                     map.put("password", password);
                     map.put("noOfReferrals", 0);
                     map.put("storeCredits", 50);
+                    map.put("isAdmin", false);
                     rootRef.child("Users").child(phoneNo).updateChildren(map)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

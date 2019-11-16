@@ -8,6 +8,7 @@ public class Users implements Serializable {
     private String password;
     private Integer noOfReferrals;
     private Integer storeCredits;
+    private Boolean isAdmin;
 
     public String getName() {
         return name;
@@ -47,5 +48,13 @@ public class Users implements Serializable {
 
     public void setStoreCredits(Integer storeCredits) {
         this.storeCredits = storeCredits;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 }

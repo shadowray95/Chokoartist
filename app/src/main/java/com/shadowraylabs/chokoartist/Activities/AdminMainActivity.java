@@ -1,5 +1,6 @@
 package com.shadowraylabs.chokoartist.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,12 +11,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.shadowraylabs.chokoartist.Activities.ui.adminPanel.adminPanelFragment;
 import com.shadowraylabs.chokoartist.Model.Users;
 import com.shadowraylabs.chokoartist.R;
 
@@ -40,6 +48,7 @@ public class AdminMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
+        userObj = (Users) getIntent().getSerializableExtra("userObj");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -51,7 +60,24 @@ public class AdminMainActivity extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!(Boolean) dataSnapshot.child("Users").child(userObj.getPhoneNo()).child("isAdmin").getValue(Boolean.class)){
+                    Menu menu = navigationView.getMenu();
+                    menu.removeItem(R.id.nav_admin_panel);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -67,8 +93,6 @@ public class AdminMainActivity extends AppCompatActivity {
         adminMainUserName = (TextView) headerView.findViewById(R.id.adminMainUserName);
         adminMainPhoneNo = (TextView) headerView.findViewById(R.id.adminMainPhoneNo);
 
-        userObj = (Users) getIntent().getSerializableExtra("userObj");
-        Toast.makeText(AdminMainActivity.this, "Welcome to Chokoartist "+userObj.getName(), Toast.LENGTH_LONG).show();
         adminMainUserName.setText(userObj.getName());
         adminMainPhoneNo.setText(userObj.getPhoneNo());
     }
@@ -104,4 +128,20 @@ public class AdminMainActivity extends AppCompatActivity {
     public Users getUserObject(){
         return userObj;
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Intent intent = getIntent();
+//
+//        String frag = intent.getExtras().getString("fragment");
+//
+//        switch(frag){
+//
+//            case "adminFragment":
+//                //here you can set Fragment B to your activity as usual;
+//                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, new adminPanelFragment()).commit();
+//                break;
+//        }
+//    }
 }

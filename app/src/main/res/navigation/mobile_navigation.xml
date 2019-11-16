@@ -39,11 +39,11 @@
         android:id="@+id/nav_share"
         android:name="com.shadowraylabs.chokoartist.Activities.ui.share.ShareFragment"
         android:label="@string/menu_share"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_admin_panel" />
 
     <fragment
         android:id="@+id/contact_us"
         android:name="com.shadowraylabs.chokoartist.Activities.ui.contactUs.contactUsFragment"
         android:label="Contact Us"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_admin_panel" />
 </navigation>
